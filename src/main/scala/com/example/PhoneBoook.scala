@@ -18,19 +18,19 @@ class PhoneBoook(var owner:User){
 
   //This method takes a user object as parameter and add it to the list of contact if it does not exist yet
   def addContact(user:User){
-      if(user == null){
-        throw new IllegalArgumentException("requirement failed: Contact cannot be null")
-      }
+    if(user == null){
+      throw new IllegalArgumentException("requirement failed: Contact cannot be null")
+    }
 
-      else{
-        val c = contacts.find(p => p.myName == user.myName)
-        if (c != None){
-          throw new IllegalArgumentException("requirement failed: Cannot add repeated contacts")
-        }
-        else{
-          contacts += user
-        }
+    else{
+      val c = contacts.find(p => p.myName == user.myName)
+      if (c != None){
+        throw new IllegalArgumentException("requirement failed: Cannot add repeated contacts")
       }
+      else{
+        contacts += user
+      }
+    }
 
   }
 
@@ -40,7 +40,6 @@ class PhoneBoook(var owner:User){
     (contacts.find(p => p.myName == name)) match {
       case None => throw new IllegalArgumentException("There is no user named " + name)
       case _ =>
-          println("Its here")
         (contacts.find(p => p.myName == name)).get.addNumber(phone)
     }
 
@@ -54,10 +53,10 @@ class PhoneBoook(var owner:User){
       case null => throw new IllegalArgumentException("requirement failed: Cannot search for a null user")
       case _ =>
         var listUsers = List[User]()
-        for (c <- contacts if c.myName.toLowerCase().startsWith(name.toLowerCase())){
+        for (c <- contacts if c.myName.startsWith(name.toLowerCase())){
           listUsers = c :: listUsers
         }
-        return listUsers.reverse
+        return listUsers.sortBy(_.myName)
     }
   }
 

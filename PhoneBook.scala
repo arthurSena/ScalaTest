@@ -5,7 +5,7 @@ import scala.collection.mutable.ArrayBuffer
 /**
  * Created by arthur on 10/03/15.
  */
-class PhoneBoook(var owner:User){
+class PhoneBook(var owner:User){
 
   //Checking constructor arguments
   if (owner==null){

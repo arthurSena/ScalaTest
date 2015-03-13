@@ -148,8 +148,8 @@ object Lab {
     var pb = new phonebook().addName("Arthur")
     println("Both lists were merged using a for command and a implicit function: "+juntaListasImplicit(l1,l2).toString())
 
-
-
+    println("//----------------------Função parcialmente aplicada--------------------------------")
+    println(_colocaAssinatura("Arthur"))
 
 
   }
@@ -206,7 +206,11 @@ object Lab {
 
   def mult(x:Integer, y :Integer) = x*y
 
+  def concatena(s1:String,s2:String) ={
+    s1 + s2
+  }
 
+  def _colocaAssinatura = concatena("Sr." , _:String )
   //-----------------------------------------------------------------------
 }
 

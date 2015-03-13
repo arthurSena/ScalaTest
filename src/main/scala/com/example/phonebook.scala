@@ -5,7 +5,7 @@ package com.example
  */
 class phonebook {
 
-  def addName(nome:String) = println("Name " + nome +  " added")
+  def addName(user:User) = println(user.myName)
 
 
 

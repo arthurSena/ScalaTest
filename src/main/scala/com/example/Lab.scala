@@ -144,14 +144,17 @@ object Lab {
 
     println("Tuple with the persons " +getPerson(listaOpt).toString())
 
-//    ((new Person).auto = new Option[Carro]) :: listaOpt
-
-
     println("//----------------------Métodos e objetos implicitos--------------------------------")
-    var pb = new phonebook().addName(new User("Arthur").myName)
+    var pb = new phonebook().addName("Arthur")
+    println("Both lists were merged using a for command and a implicit function: "+juntaListasImplicit(l1,l2).toString())
+
+
+
 
 
   }
+  implicit def soma(x:Integer, y :Integer) = x+y
+  implicit def a(s:String) = new User(s)
 
   def getPerson(lista:List[Person]) = {
     var t = List[(Any,Any)]()
@@ -184,6 +187,16 @@ object Lab {
     listaToReturn.reverse
   }
 
+  def juntaListasImplicit(lista1 : List[Integer], lista2 : List[Integer]) (implicit soma:(Integer, Integer) => Int) = {
+    var listaToReturn = List[Integer]()
+
+    for (i <- 0 to (lista1.length - 1)){
+      listaToReturn = soma(lista1(i), lista2(i)) :: listaToReturn
+    }
+
+    listaToReturn.reverse
+  }
+
 
   //The function below does the same thing that the above function does without using for commmand
   def juntaListasSemFor(lista1 : List[Integer], lista2 : List[Integer], mult:(Integer, Integer) => Integer) = {
@@ -192,6 +205,7 @@ object Lab {
 
 
   def mult(x:Integer, y :Integer) = x*y
+
 
   //-----------------------------------------------------------------------
 }

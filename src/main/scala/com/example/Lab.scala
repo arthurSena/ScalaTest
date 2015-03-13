@@ -1,5 +1,7 @@
 package com.example
 
+import sun.swing.plaf.windows.ClassicSortArrowIcon
+
 import scala.collection.mutable.ArrayBuffer
 import collection.mutable.HashMap
 
@@ -119,7 +121,51 @@ object Lab {
     new Bike :: listaObj
     println("See the code")
 
+    println("//----------------------Options--------------------------------")
+    var listaOpt = List[Person]()
+
+    var p1 = new Person
+    p1.auto = Some(new Carro)
+
+    var p2 = new Person
+    p2.auto = Some(new Bicleta)
+
+    var p3 = new Person
+    p3.auto = Some(new Helicoptero)
+
+    var p4 = new Person
+    p4.auto = Some(new Moto)
+
+    var p5 = new Person
+    var p6 = new Person
+    var p7 = new Person
+
+    listaOpt = p1 :: p2 :: p3 :: p4 :: p5 :: p6 :: p7 :: listaOpt
+
+    println("Tuple with the persons " +getPerson(listaOpt).toString())
+
+//    ((new Person).auto = new Option[Carro]) :: listaOpt
+
+
+    println("//----------------------Métodos e objetos implicitos--------------------------------")
+    var pb = new phonebook().addName(new User("Arthur").myName)
+
+
   }
+
+  def getPerson(lista:List[Person]) = {
+    var t = List[(Any,Any)]()
+    lista.map(p => p.auto match {
+      case Some(c) => if (c.name != "" && c.brand != "") t = (c.name,c.brand) :: t
+                      else if (c.name != ""  && c.brand == "") t = (c.name,"no brand") :: t
+                      else if (c.name == "" && c.brand == "") t = ("no name","no brand") :: t
+                      else t = ("no name" , c.brand) :: t
+      case None =>
+    })
+    t
+  }
+
+//  implicit def implicitAddName(user: User) =
 
   def carMotorBike(obj : Any) = obj match {
     case c :Car => println("Car")

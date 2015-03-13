@@ -101,6 +101,15 @@ object Lab {
     println("Before Reduce: " + lista)
     println("After Reduce: " + lista.reduce((x:Int, y:Int) =>x+y).toString)
 
+    println("//----------------------Trait--------------------------------")
+    val sumAndSqr = new SumAndSqr
+    val timesAndSqrt = new TimesAndSqrt
+
+
+    for (i <- (1 to 10)){
+      println("sumAndSqr.calculation("+i+"," +(i+1)+"): " + sumAndSqr.calculation(i, (i+1)))
+      println(("timesAndSqrt.calculation("+i+"," +(i+1)+"): " + timesAndSqrt.calculation(i, (i+1))))
+    }
 
 
 

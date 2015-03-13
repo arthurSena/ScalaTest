@@ -112,7 +112,19 @@ object Lab {
     }
 
 
+    println("//----------------------Pattern Matching--------------------------------")
+    val listaObj = List[Any]()
+    new Car :: listaObj
+    new MotorCycle :: listaObj
+    new Bike :: listaObj
+    println("See the code")
 
+  }
+
+  def carMotorBike(obj : Any) = obj match {
+    case c :Car => println("Car")
+    case m:MotorCycle => println("Motorcycle")
+    case b:Bike => println("Bike")
   }
 
   //------------------------Question 1 ----------------------------------
